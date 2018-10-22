@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearnAlgorithms.Heaps;
+using System;
 
 namespace LearnAlgorithms.Lists
 {
@@ -6,21 +7,24 @@ namespace LearnAlgorithms.Lists
 	{
 		static void Main(string[] args)
 		{
-			Random random = new Random();
+			Heap<int> heap = new Heap<int>();
 
-			Queue<int> queue = new Queue<int>();
+			DateTime startTime = DateTime.Now;
 
 			for (int i = 0; i < 10000; i++)
 			{
-				queue.Enqueue(random.Next(1, 10000));
+				heap.Add(i);
 			}
 
-			Console.WriteLine(queue.Deqeue());
+			for (int i = 0; i < 10000; i++)
+			{
+				heap.Get();
+			}
 
-			Console.WriteLine(queue.Deqeue());
+			DateTime endtTime = DateTime.Now;
 
-			Console.WriteLine(queue.Deqeue());
-			
+			Console.WriteLine("Program has been runnung for {0} seconds", (endtTime - startTime).Seconds);
+			GC.GetTotalMemory(true);
 			Console.Read();
 		}
 	}
